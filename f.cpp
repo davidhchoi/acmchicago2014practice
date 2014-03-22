@@ -33,21 +33,23 @@ bool update()
                     changed = true;
                 }
             }
-            else if (isvalid(i-1, j) && grid[i-1][j].dist > grid[i][j].dist + 1) {
-                grid[i-1][j].dist = grid[i][j].dist + 1;
-                changed = true;
-            }
-            else if (isvalid(i+1, j) && grid[i+1][j].dist > grid[i][j].dist + 1) {
-                grid[i+1][j].dist = grid[i][j].dist + 1;
-                changed = true;
-            }
-            else if (isvalid(i, j-1) && grid[i][j-1].dist > grid[i][j].dist + 1) {
-                grid[i][j-1].dist = grid[i][j].dist + 1;
-                changed = true;
-            }
-            else if (isvalid(i, j+1) && grid[i][j+1].dist > grid[i][j].dist + 1) {
-                grid[i][j+1].dist = grid[i][j].dist + 1;
-                changed = true;
+            else {
+                if (isvalid(i-1, j) && grid[i-1][j].dist > grid[i][j].dist + 1) {
+                    grid[i-1][j].dist = grid[i][j].dist + 1;
+                    changed = true;
+                }
+                if (isvalid(i+1, j) && grid[i+1][j].dist > grid[i][j].dist + 1) {
+                    grid[i+1][j].dist = grid[i][j].dist + 1;
+                    changed = true;
+                }
+                if (isvalid(i, j-1) && grid[i][j-1].dist > grid[i][j].dist + 1) {
+                    grid[i][j-1].dist = grid[i][j].dist + 1;
+                    changed = true;
+                }
+                if (isvalid(i, j+1) && grid[i][j+1].dist > grid[i][j].dist + 1) {
+                    grid[i][j+1].dist = grid[i][j].dist + 1;
+                    changed = true;
+                }
             }
         }
     }
