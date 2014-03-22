@@ -11,7 +11,6 @@ struct Pos {
     pair<int, int> dest;
     int tdiff;
     int dist;
-    Pos () {dist = INFINITY;}
 };
 
 int W = 30, H = 30, G, X, Y, E, X2, Y2, T;
@@ -58,9 +57,12 @@ bool update()
 int main()
 {
     while(true) {
-        for (int i = 0; i < W; i++)
-            for (int j = 0; j < H; j++)
+        for (int i = 0; i < W; i++) {
+            for (int j = 0; j < H; j++) {
                 grid[i][j].grave = grid[i][j].hole = false;
+                grid[i][j].dist = INFINITY;
+            }
+        }
         
         cin >> W >> H;
         if (W == 0 && H == 0)
