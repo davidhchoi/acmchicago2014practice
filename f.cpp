@@ -3,7 +3,7 @@
 #include <queue>
 using namespace std;
 
-#define INFINITY 9999999
+#define INFINITY 999999999
 
 struct Pos {
     bool grave;
@@ -26,6 +26,8 @@ bool update()
     bool changed = false;
     for (int i = 0; i < W; i++) {
         for (int j = 0; j < H; j++) {
+            if ((i == W-1 && j == H-1) || grid[i][j].dist == INFINITY)
+                continue;
             if (grid[i][j].hole) {
                 pair<int, int> dest = grid[i][j].dest;
                 if (grid[dest.first][dest.second].dist > grid[i][j].dist + grid[i][j].tdiff) {
