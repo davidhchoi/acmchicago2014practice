@@ -26,10 +26,16 @@ void union_sets(set<int>& x, set<int>& y) {
         x.insert(*it);
 }
 
-void prune(map<int, set<int> >& r) {
-    for (map<int, set<int> >::iterator it = r.begin(); it != r.end(); it++)
-        if ((*it).second.size() == 0)
-            r.erase(it--);
+void prune() {
+    map<int, set<int> >::iterator it;
+    vector<int> gone;
+    for (int i = 0; i < 2; i++) {
+        for (it = ps[i].begin(); it != ps[i].end(); it++)
+            if ((*it).second.size() == 0)
+                gone.push_back((*it).first);
+        for (unsigned int i = 0; i < gone.size(); i++)
+            ps[i].erase(gone[i]);
+    }
 }
 
 void bipart(vector<int>& p) {
@@ -103,8 +109,7 @@ int main()
 
 //        print();
         bipart(p);
-        // for (int i = 0; i < 2; i++)
-        //     prune(ps[i]);
+        prune();
 
 //        print();
 
@@ -145,8 +150,7 @@ int main()
             nmoves++;
 
             bipart(p);
-            // for (int i = 0; i < 2; i++)
-            //     prune(ps[i]);
+            prune();
             
 //            print();
         }
