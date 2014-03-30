@@ -13,7 +13,7 @@ map<int, set<int> > ps[2];
 int idxMaxSize(map<int, set<int> >& ps) {
     unsigned int maxsize = 0, idx;
     for (map<int, set<int> >::iterator it = ps.begin(); it != ps.end(); it++) {
-        if ((*it).second.size() > maxsize) {
+        if ((*it).second.size() >= maxsize) {
             maxsize = (*it).second.size();
             idx = (*it).first;
         }
@@ -115,7 +115,7 @@ int main()
         int nmoves = 0;
         while(true) {
             int oppcp = (cp == 0 ? 1 : 0);
-            if (ps[cp].size() == 0 || ps[oppcp].size() == 0)
+            if (ps[0].size() == 0 || ps[1].size() == 0)
                 break;
             
             int idx = idxMaxSize(ps[cp]);
